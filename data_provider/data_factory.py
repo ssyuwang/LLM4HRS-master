@@ -6,7 +6,6 @@ data_dict = {
     'custom': Dataset_Custom,
 }
 
-
 def data_provider(args, flag):
     Data = data_dict[args.data]
     
