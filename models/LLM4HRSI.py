@@ -104,7 +104,6 @@ class Model(nn.Module):
         x_m_s_output = self.gpt2(inputs_embeds = x_m_s_enc).last_hidden_state
         s_outputs = self.s_ln_proj(x_m_s_output)
         s_dec_out = self.s_out_layer(s_outputs)
-
         spa_out = rearrange(s_dec_out, 'b m l -> b l m')
     
         dec_out = torch.cat([tem_out, spa_out],dim = 2)

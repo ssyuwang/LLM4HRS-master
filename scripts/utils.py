@@ -1,6 +1,4 @@
-"""
-Most codes from https://github.com/carpedm20/DCGAN-tensorflow
-"""
+
 from __future__ import division
 import math
 import random
