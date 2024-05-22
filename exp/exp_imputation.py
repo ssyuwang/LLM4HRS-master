@@ -113,25 +113,8 @@ class Exp_Imputation(Exp_Basic):
 
                 f_dim = -1 if self.args.features == 'MS' else 0
                 outputs = outputs[:, :, f_dim:]
-               
-                #print(outputs)
-                #print(torch.sum(torch.isnan(batch_x_copy[intact_missing_mask-missing_mask ==1] )).item())
-                #loss = criterion(outputs[intact_missing_mask ==1], batch_x_copy[intact_missing_mask ==1])  
-                '''
-                batch_x_copy = train_data.inverse_transform(batch_x_copy.view(B*T,N).cpu().numpy())
-
-                batch_x_copy = torch.tensor(batch_x_copy).float().to(self.device)
-                batch_x_copy = batch_x_copy.view(B,T,N)
-
-                outputs = train_data.inverse_transform(outputs.view(B*T,N).detach().cpu().numpy())
-
-                outputs = torch.tensor(outputs).float().to(self.device)
-
-                outputs = outputs.view(B,T,N)
-                '''
-
+        
                 loss1 = criterion(outputs[eval_mask ], batch_x_copy[eval_mask ])
-                
                 loss =  loss1 
 
                
