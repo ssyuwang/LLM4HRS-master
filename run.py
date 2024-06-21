@@ -15,7 +15,7 @@ np.random.seed(fix_seed)
 parser = argparse.ArgumentParser(description='LLM4HRS')
 
 # basic config
-parser.add_argument('--task_name', type=str, required=True, default='long_term_forecast',
+parser.add_argument('--task_name', type=str, required=True, default='imputation',
                     help='task name, options:[long_term_forecast, short_term_forecast, imputation, classification, anomaly_detection]')
 parser.add_argument('--is_training', type=int, required=True, default=1, help='status')
 parser.add_argument('--model_id', type=str, required=True, default='test', help='model id')
@@ -110,20 +110,7 @@ if args.use_gpu and args.use_multi_gpu:
 
 print('Args in experiment:')
 print(args)
-
-if args.task_name == 'long_term_forecast':
-    Exp = Exp_Long_Term_Forecast
-elif args.task_name == 'short_term_forecast':
-    Exp = Exp_Short_Term_Forecast
-elif args.task_name == 'imputation':
-    Exp = Exp_Imputation
-elif args.task_name == 'anomaly_detection':
-    Exp = Exp_Anomaly_Detection
-elif args.task_name == 'classification':
-    Exp = Exp_Classification
-else:
-    Exp = Exp_Long_Term_Forecast
-
+Exp = Exp_Imputation
 if args.is_training:
     for ii in range(args.itr):
         # setting record of experiments
